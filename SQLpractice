@@ -1,0 +1,225 @@
+CREATE TABLE Partners (
+    Client_ID INT PRIMARY KEY,
+    Partner_Stores VARCHAR(50),
+    Partner_Loc VARCHAR(50),
+    Super_ID INT
+
+);
+
+CREATE TABLE Total_Sales (
+    Employee_ID INT, 
+    Client_ID INT,
+    Total_Sales INT,
+    PRIMARY KEY(Employee_ID, Client_ID)
+    
+);
+
+INSERT INTO Total_Sales VALUES(1185, 300, 8000);
+INSERT INTO Total_Sales VALUES(1185, 302, 15850);
+INSERT INTO Total_Sales VALUES(1185, 303, 12000);
+INSERT INTO Total_Sales VALUES(1782, 200, 3000);
+INSERT INTO Total_Sales VALUES(1782, 201, 14000);
+INSERT INTO Total_Sales VALUES(1389, 501, 500);
+INSERT INTO Total_Sales VALUES(1389, 505, 6994);
+INSERT INTO Total_Sales VALUES(1389, 510, 8500);
+INSERT INTO Total_Sales VALUES(1389, 504, 4100);
+INSERT INTO Total_Sales VALUES(1389, 508, 800);
+INSERT INTO Total_Sales VALUES(1010, 302, 200);
+INSERT INTO Total_Sales VALUES(1010, 308, 189);
+INSERT INTO Total_Sales VALUES(1010, 305, 652);
+INSERT INTO Total_Sales VALUES(630, 302, 23);
+INSERT INTO Total_Sales VALUES(630, 303, 45);
+INSERT INTO Total_Sales VALUES(8745, 201, 8000);
+INSERT INTO Total_Sales VALUES(8745, 501, 96);
+INSERT INTO Total_Sales VALUES(8745, 505, 4510);
+INSERT INTO Total_Sales VALUES(1254, 302, 8951);
+
+
+INSERT INTO Partners VALUES(300, 'Walmart', 'Smith Avenue', 1185);
+INSERT INTO Partners VALUES(302, 'Walmart', 'Tames Blvd', 1185);
+INSERT INTO Partners VALUES(303, 'Walamrt', 'Marrows Road', 1185);
+INSERT INTO Partners VALUES(200, 'Target', 'Patetmeys Street', 1782);
+INSERT INTO Partners VALUES(201, 'Target', 'Mills Avenue', 1782);
+INSERT INTO Partners VALUES(501, 'Local Grocery Store', 'Clifts Road', 1389);
+INSERT INTO Partners VALUES(505, 'Local Grocery Store', 'Millavilles Road', 1389);
+INSERT INTO Partners VALUES(510, 'Local Grocery Store', 'Baskins Street', 1389);
+INSERT INTO Partners VALUES(504, 'Local Grocery Store', 'Weledins Blvd', 1389);
+INSERT INTO Partners VALUES(508, 'Local Grocery Store', 'Smaraithes Avenue', 1389);
+INSERT INTO Partners VALUES(307, 'Winn Dixie', 'Smiths Avenue', 1010);
+INSERT INTO Partners VALUES(308, 'Winn Dixie', 'Pathens Street', 1010);
+INSERT INTO Partners VALUES(305, 'Winn Dixie', 'Barrows Road', 1010);
+
+
+CREATE TABLE Employee (
+    Employee_ID INT Primary KEY,
+    Employees varchar(50),
+    Supervisors VARCHAR(1),
+    Date_Hire DATE,
+    Birth_Date DATE,
+    Sex VARCHAR(1),
+    Salary INT,
+    Super_ID INT
+);
+
+CREATE TABLE Departments (
+    Depart_ID INT PRIMARY KEY,
+    Department_Name VARCHAR(50),
+    Man_ID INT,
+    FOREIGN KEY(Man_ID) REFERENCES Employee(Employee_ID) ON DELETE SET NULL
+);
+
+CREATE TABLE Products (
+    Product_ID INT PRIMARY KEY,
+    Brand varchar(50),
+    Ice_Bran INT,
+    Purchased INT
+);
+
+
+INSERT INTO Employee VALUES(801, 'Patrick Floyd', 'N', '2024-01-29', '1986-05-02', 'M', 45000, 1185);
+INSERT INTO Employee VALUES(501, 'Tammy Bell', 'N', '2018-02-02', '1956-02-06', 'F', 65000, 1185);
+INSERT INTO Employee VALUES(2036, 'Kathy Brasus', 'Y', '2018-02-28', '1976-08-12', 'F', 67000, 1386);
+INSERT INTO Employee VALUES(814, 'Thomas Kells', 'N', '2024-05-25', '1990-03-09', 'M', 40000, 0);
+INSERT INTO Employee VALUES(1185, 'Brandon Wilson', 'Y', '2010-06-10', '1966-02-01', 'M', 70000, 1248);
+INSERT INTO Employee VALUES(1574, 'Ferb Borb', 'N', '2024-06-08', '1993-07-10', 'M', 41000, 0);
+INSERT INTO Employee VALUES(210, 'Feleciia Theaiabuax', 'Y', '2009-01-10', '1970-06-12', 'F', 68000, 6359);
+INSERT INTO Employee VALUES(6389, 'Rebecca Tbons', 'Y', '2014-02-16', '1980-05-02', 'F', 68000, 4812);
+INSERT INTO Employee VALUES(4520, 'Rose Fleuix', 'N', '2016-11-18', '1987-09-09', 'F', 50000, 0);
+INSERT INTO Employee VALUES(901, 'Alan Thrornebex', 'N', '2017-10-24', '1963-02-04', 'M', 51000, 0);
+INSERT INTO Employee VALUES(2145, 'Alexander Strongs', 'Y', '2017-10-24', '1984-12-10', 'M', 69000, 1010);
+INSERT INTO Employee VALUES(630, 'Andrew Gruvens', 'N', '2018-03-08', '1995-02-09', 'M', 50000, 0);
+INSERT INTO Employee VALUES(8745, 'Yvonne Williams', 'N', '2018-04-10', '1991-09-12', 'F', 49000, 0);
+INSERT INTO Employee VALUES(1254, 'Zoe Roberstons', 'N', '2010-07-10', '1969-04-26', 'F', 50000, 0);
+INSERT INTO Employee VALUES(2105, 'Jonathan Lims', 'Y', '2009-01-10', '1971-12-31', 'M', 75000, 2140);
+INSERT INTO Employee VALUES(269, 'Joseph Admas', 'N', '2024-07-01', '1999-03-12', 'M', 40000, 0);
+INSERT INTO Employee VALUES(3014, 'Joshua Rodrigruiez', 'N', '2020-04-04', '1992-06-15', 'M', 45000, 0);
+INSERT INTO Employee VALUES(320, 'Julian Childs', 'N', '2022-09-01', '1996-05-08', 'M', 43000, 0);
+INSERT INTO Employee VALUES(148, 'Justin Creed', 'N', '2011-12-01', '1981-09-11', 'M', 48000, 0);
+
+
+
+INSERT INTO Departments VALUES(100, 'Sales', 2036);
+INSERT INTO Departments VALUES(103, 'Customer Service', 210);
+INSERT INTO Departments VALUES(104, 'Technology', 2105);
+INSERT INTO Departments VALUES(105, 'HR', 6389);
+INSERT INTO Departments VALUES(102, 'Operations', 700);
+
+
+INSERT INTO Products VALUES(300, 'Blue Bell', 89000, 50000);
+INSERT INTO Products VALUES(400, 'Blue Bunny', 52601, 40000);
+INSERT INTO Products VALUES(500, 'Haagen-Dazs', 80000, 45000);
+INSERT INTO Products VALUES(600, 'Ben & Jerrys', 75241, 60000);
+INSERT INTO Products VALUES(700, 'Dreyers', 502, 200);
+INSERT INTO Products VALUES(800, 'Turkey Hill', 921, 405);
+INSERT INTO Products VALUES(900, 'Breyers', 45001, 15201);
+INSERT INTO Products VALUES(1010, 'Talenti', 65210, 45892);
+INSERT INTO Products VALUES(1123, 'Halo Top', 58200, 34502);
+INSERT INTO Products VALUES(1245, 'Magnum', 60285, 56283);
+INSERT INTO Products VALUES(1389, 'McConnells Fine Icecream', 901, 562);
+INSERT INTO Products VALUES(1485, 'Cold Stone Creamery', 3000, 2458);
+INSERT INTO Products VALUES(1545, 'Coolhaus', 263, 89);
+INSERT INTO Products VALUES(1689, 'Van Leeuwen', 541, 289);
+INSERT INTO Products VALUES(1782, 'Colonial Ice Cream', 6630, 4521);
+INSERT INTO Products VALUES(1869, 'Cows Creamery', 874, 568);
+INSERT INTO Products VALUES(1920, 'Butter Socks Italian Creams', 289, 56);
+INSERT INTO Products VALUES(2621, 'Freels Wheels Ice Cream bars', 454, 158);
+INSERT INTO Products VALUES(2159, 'Pink Allys Creams', 9025, 5849);
+
+Update Employee
+SET Super_ID = 0
+Where Employee_ID = 501;
+
+
+--\\How many products the Employee sold at each location//
+SELECT Total_Sales
+FROM Total_Sales
+Where Total_Sales.Employee_ID = 1185;
+
+
+--\\How many products the Employee sold\\
+SELECT SUM(Total_Sales), Employee_ID
+FROM Total_Sales
+Where Employee_ID = 1185;
+
+
+SELECT * FROM Partners;
+
+
+--//Renaming column to Workers instead of Employees//
+SELECT Employees AS Workers
+FROM Employee;
+
+---//Showing the employee who has the highest salary than the lowest//
+SELECT Employees, Salary
+FROM Employee
+WHERE Salary > 48000;
+
+
+--//Ranking the employees by the highest salary//
+SELECT
+Employee_ID,
+Employees,
+Date_Hire,
+Salary,
+RANK() OVER (ORDER BY Salary DESC)
+FROM Employee;
+
+--//How many Ice cream brands//
+SELECT 
+Count(distinct Brand)
+FROM Products;
+
+
+SELECT * FROM Partners
+WHERE Client_ID >= 300;
+
+
+
+SELECT * FROM Employee
+ORDER BY Employees ASC;
+
+--//All none supervisors that start with and N and first name beginning with J//
+SELECT *
+FROM Employee
+WHERE Supervisors = 'N' AND Employees LIKE 'J%';
+
+
+--//USING conditions and they must be true can be complex//
+SELECT * FROM Partners
+WHERE Client_ID = 302
+AND Partner_Loc = 'Tames Blvd'
+AND Super_ID = 1185;
+
+
+--//All none supervisors that start with and N and first name beginning with J & A,but using parethese to capture only for N//
+
+SELECT *
+FROM Employee
+WHERE Supervisors = 'N' AND (Employees LIKE 'J%' OR Employees LIKE 'A%');
+
+
+
+--//see can i join these tables then try again//save for later
+SELECT *
+FROM Products, Employee
+WHERE Brand = 'Blue%' OR Employees = 'J%';
+
+--//showing all supervisors and not the ones with N, this the NOT operator//
+SELECT *
+FROM Employee
+WHERE NOT Supervisors = 'N';
+
+--//All employes except the ones who name starts with a J//
+SELECT * 
+FROM Employee
+WHERE Employees NOT LIKE 'J%';
+
+
+--//Using the Not between and all the Product ID show up thats out the scope of 1400 and 2100//
+SELECT * 
+FROM Products
+WHERE Product_ID NOT BETWEEN 1400 AND 2100;
+
+SELECT Employees
+FROM Employee
+WHERE Super_ID IS NOT NULL;
