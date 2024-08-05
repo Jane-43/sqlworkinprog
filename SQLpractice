@@ -1,3 +1,6 @@
+--\\Company name Praziers
+
+
 CREATE TABLE Partners (
     Client_ID INT PRIMARY KEY,
     Partner_Stores VARCHAR(50),
