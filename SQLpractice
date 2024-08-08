@@ -226,3 +226,37 @@ WHERE Product_ID NOT BETWEEN 1400 AND 2100;
 SELECT Employees
 FROM Employee
 WHERE Super_ID IS NOT NULL;
+
+--\\Update Table and change two coloumns Brand and Ice_Bran on the 300 line\\
+Update Products
+SET Brand = 'Blue Bells', Ice_Bran = '90000'
+WHERE Product_ID = 300;
+
+SELECT * FROM Products;
+
+
+-- \\Selecting Supervisors with a limit of 3 with a N\\
+SELECT * FROM Employee
+WHERE Supervisors = 'N'
+LIMIT 3;
+
+SELECT * FROM Employee
+ORDER BY Employees DESC
+LIMIT 5;
+
+SELECT MAX(Purchased)
+FROM Products;
+
+SELECT MIN(Purchased) AS LessPurchased
+FROM Products;
+
+SELECT MIN(Purchased) AS LessPurchased, Brand
+FROM Products
+GROUP BY Brand;
+
+SELECT COUNT(*)
+FROM Products;
+
+SELECT COUNT(Product_ID)
+FROM Products
+WHERE Purchased > 500;
