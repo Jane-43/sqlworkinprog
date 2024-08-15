@@ -260,3 +260,52 @@ FROM Products;
 SELECT COUNT(Product_ID)
 FROM Products
 WHERE Purchased > 500;
+
+
+SELECT COUNT(DISTINCT Purchased)
+FROM Products;
+
+SELECT COUNT(*)
+FROM Products
+WHERE Purchased = 405;
+
+SELECT SUM(Total_Sales)
+FROM Total_Sales;
+
+SELECT SUM(Salary)
+FROM Employee
+WHERE Employee_ID = 814;
+
+SELECT SUM(Salary) AS Annual_Pay
+FROM Employee;
+
+SELECT Employee_ID, SUM(Salary) AS PAY
+FROM Employee
+GROUP BY Employee_ID;
+
+SELECT SUM(Salary DIV 10)  
+FROM Employee;
+
+SELECT SUM(Total_Sales)
+FROM Total_Sales
+LEFT JOIN Employee ON Total_Sales.Employee_ID = Employee.Employee_ID;
+
+
+Select * FROM Total_Sales;
+
+SELECT AVG(Purchased)
+FROM Products;
+
+--// USE THE like to only caluclate the average for the product_id with double zero's 00//
+SELECT AVG(Purchased)
+FROM Products
+WHERE Product_ID LIKE '%00%';
+
+SELECT AVG(Purchased) AS AP
+FROM Products;
+
+
+--//Selecting all of the ice cream brands that were greater than the average of the ice cream brand purchased//
+SELECT * FROM Products
+WHERE Purchased > (SELECT AVG(Purchased) FROM Products);
+
