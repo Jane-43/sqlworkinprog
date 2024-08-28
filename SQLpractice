@@ -309,3 +309,107 @@ FROM Products;
 SELECT * FROM Products
 WHERE Purchased > (SELECT AVG(Purchased) FROM Products);
 
+SELECT AVG(Purchased) AS AveragePrice, Brand
+FROM Products
+GROUP BY Brand;
+
+SELECT * FROM Employee
+WHERE Employees LIKE 'A%';
+
+SELECT * FROM Employee
+WHERE Employees LIKE 'T_MM_%';
+
+SELECT * FROM Employee
+WHERE Employees LIKE '%L%';
+
+SELECT * FROM Employee
+WHERE Employees LIKE 'Ju%';
+
+SELECT * FROM Employee
+WHERE Employees LIKE 'A%' OR Employees LIKE 'Z%';
+
+SELECT * FROM Products
+WHERE Brand LIKE '%M';
+
+SELECT * FROM Products
+WHERE Brand LIKE 'B%S';
+
+SELECT * FROM Products
+WHERE Brand LIKE '%am%';
+
+SELECT * FROM Products
+WHERE Brand LIKE 'B__%';
+
+SELECT * FROM Products
+WHERE Brand LIKE '_R%';
+
+SELECT * FROM Employee
+WHERE Supervisors LIKE 'N';
+
+SELECT * FROM Employee
+WHERE Employees LIKE 'a%';
+
+SELECT * FROM Employee
+WHERE Employees LIKE '[A-F]%';
+
+SELECT * FROM Employee
+WHERE Employee_ID LIKE '[852]%';
+
+SELECT * FROM Products
+WHERE BranD LIKE 'DRE____%';
+
+SELECT * FROM Partners
+WHERE Partner_Stores IN ('Walmart', 'Target');
+
+SELECT * FROM Partners
+WHERE Partner_Stores NOT IN ('Winn Dixie', 'Local Grocery Store');
+
+--\\returning sales from all partner clients//
+SELECT * FROM Total_Sales
+WHERE Client_ID IN (SELECT Client_ID FROM Partners);
+
+
+SELECT * FROM Products
+WHERE Product_ID BETWEEN 300 AND 1400;
+
+SELECT * FROM Products
+WHERE Product_ID NOT BETWEEN 400 AND 1700;
+
+--\\showing partner stores with only ID between 300 and 600//
+SELECT * FROM Partners
+WHERE Client_ID BETWEEN 300 AND 600
+AND Partner_Stores IN ('Walamrt', 'Target', 'Winn Dixie');
+
+SELECT * FROM Products
+WHERE Brand BETWEEN 'Blue Bell' AND 'Colonial Ice Cream'
+ORDER BY Brand;
+
+SELECT * FROM Products
+WHERE Brand BETWEEN 'Blue Bell' AND 'Pink Allys Creams'
+ORDER BY Brand;
+
+SELECT * FROM Products
+WHERE Brand NOT BETWEEN 'Blue Bell' AND 'Colonial Ice Cream'
+ORDER BY Brand;
+
+SELECT * FROM Employee
+WHERE Date_Hire BETWEEN '2011-12-01' AND '2024-06-08';
+
+SELECT Employee_ID AS Workers
+FROM Employee;
+
+SELECT Employee_ID Workers
+FROM Employee;
+
+SELECT Employee_ID Workers, Supervisors Leads
+FROM Employee;
+
+SELECT Brand AS "Ice Cream Brand"
+FROM Products;
+
+--\combining store name and street and changing to address\\
+SELECT Client_ID, CONCAT(Partner_Stores,', ',Partner_Loc) AS Address
+FROM Partners;
+
+SELECT * FROM Employee AS Workers;
+
