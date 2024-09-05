@@ -413,3 +413,25 @@ FROM Partners;
 
 SELECT * FROM Employee AS Workers;
 
+--\\inner join on how many sales some employees made to clients\\
+SELECT Employees, Client_ID, Total_Sales, Super_ID
+FROM Employee
+INNER JOIN Total_Sales ON Employee.Employee_ID=Total_Sales.Employee_ID;
+
+--\\left join from employee table and toatal sales\\
+SELECT Employee.Employees, Total_Sales.Total_Sales
+FROM Employee
+LEFT JOIN Total_Sales ON Employee.Employee_ID = Total_Sales.Employee_ID
+ORDER BY Employee.Employees;
+
+--\\right join on partners table with clients sales from each store and location\\
+SELECT Partners.Partner_Stores, Partners.Partner_Loc, Total_Sales.Total_Sales
+FROM Total_Sales
+RIGHT JOIN Partners ON Total_Sales.Client_ID = Partners.Client_ID
+ORDER BY Total_Sales.Total_Sales;
+
+SELECT Employee.Employees, Total_Sales.Client_ID
+FROM Employee
+FULL JOIN Total_Sales ON Employee.Employee_ID = Total_sales.Employee_ID
+ORDER BY Employee.Employees;
+
